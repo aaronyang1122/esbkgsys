@@ -5,7 +5,16 @@ var express = require('express');
 var router = express.Router();
 var news = require('../controllers/news');
 
-/* GET users listing. */
+/* GET news list */
 router.get('/list', news.newsList);
+
+/* GET news detail */
+router.get('/detail', news.newDetail);
+
+/* POST new News */
+router.post('/addnews', news.addNews);
+
+/* DELETE News */
+router.delete('/delnews', news.delNews);
 
 module.exports = router;

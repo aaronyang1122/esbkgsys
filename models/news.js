@@ -15,15 +15,7 @@ var newsSchema = new Schema({
         ch: {type: Array},
         en: {type: Array}
     },
-    summary: {
-        ch: {type: String},
-        en: {type: String}
-    },
     content: {
-        ch: {type: String},
-        en: {type: String}
-    },
-    writer: {
         ch: {type: String},
         en: {type: String}
     },
@@ -36,22 +28,19 @@ var newsSchema = new Schema({
         default: 0
     },
     updatetime: {
-        type: Date
+        type: Date,
+        default: Date.now
     },
     createtime: {
         type: Date,
         default: Date.now
     },
-    id: {
-        type: Number,
-        default: 0
-    }
+    img: {type: String}
 });
 
 newsSchema.index({
     keyword: 1,
-    title: 1,
-    id: 1
+    title: 1
 });
 
 mongoose.model('News', newsSchema);
