@@ -17,4 +17,7 @@ router.post('/addnews', news.addNews);
 /* DELETE News */
 router.delete('/delnews', news.delNews);
 
+/* UPDATE News */
+router.post('/updatenews', news.updateNews);
+
 module.exports = router;

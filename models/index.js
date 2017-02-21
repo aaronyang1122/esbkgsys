@@ -16,5 +16,7 @@ mongoose.connect(config.db, config.dboptions, function (err) {
 });
 
 require('./news');
+require('./banner');
 
 exports.News = mongoose.model('News');
+exports.Banner = mongoose.model('Banner');

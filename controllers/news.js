@@ -37,7 +37,24 @@ exports.newDetail = function (req, res, next) {
 
 exports.delNews = function (req, res, next) {
     News.delNews(req.body.id, function (err) {
-        if (err) return next(err);
-        res.send('delete successful');
+        if (err) {
+            // console.log(err.message)
+            // res.status(500).send(err.message);
+            return next(err);
+        } else {
+            res.send('delete successful');
+        }
+    })
+}
+
+exports.updateNews = function (req, res, next) {
+    News.updateNews(req.query.id, req.body, function (err, item) {
+        if (err) {
+            // console.log(err.message)
+            // res.status(500).send(err.message);
+            return next(err);
+        } else {
+            res.send(item);
+        }
     })
 }

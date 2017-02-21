@@ -6,26 +6,26 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var newsSchema = new Schema({
+var bannerSchema = new Schema({
     title: {
         ch: {type: String},
         en: {type: String}
     },
-    keyword: {
-        ch: {type: Array},
-        en: {type: Array}
+    logo: {
+        type: String
+    },
+    prdpic: {
+        type: String
     },
     content: {
-        ch: {type: Schema.Types.Mixed},
-        en: {type: Schema.Types.Mixed}
+        ch: {type: String},
+        en: {type: String}
     },
-    readcount: {
-        type: Number,
-        default: 0
+    textposition: {
+        type: String
     },
     index: {
-        type: Number,
-        default: 0
+        type: Number
     },
     updatetime: {
         type: Date,
@@ -34,13 +34,7 @@ var newsSchema = new Schema({
     createtime: {
         type: Date,
         default: Date.now
-    },
-    img: {type: String}
+    }
 });
 
-newsSchema.index({
-    keyword: 1,
-    title: 1
-});
-
-mongoose.model('News', newsSchema);
+mongoose.model('Banner', bannerSchema);

@@ -8,12 +8,11 @@ var News = models.News;
 // news crud
 // create
 exports.addNews = function (body, callback) {
-    console.log(body)
     var newOne = new News(body);
     newOne.save(function (err) {
-        if (err) throw err;
+        // if (err) throw err;
         callback(err);
-    });
+    })
 }
 
 // read
@@ -26,11 +25,35 @@ exports.newDetail = function (id, callback) {
 }
 
 // update
-exports.modifyNews = function () {
-    
+exports.updateNews = function (id, body, callback) {
+    body.updatetime = new Date();
+    News.findByIdAndUpdate(id, body, { new: true }, callback);
 }
 
 // delete
 exports.delNews = function (id, callback) {
-    News.findByIdAndRemove(id, callback)
+    var item = [];
+    switch (id.constructor) {
+        case Array:
+            id.forEach(function (e, i, arr) {
+                item[i] = new Promise(function (resolve, reject) {
+                    News.findByIdAndRemove(e, function (err) {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve();
+                        }
+                    })
+                })
+            })
+            Promise.all(item).then(function () {
+                callback();
+            }).catch(function (err) {
+                callback(err);
+            })
+            break;
+        case String:
+            News.findByIdAndRemove(id, callback)
+            break;
+    }
 }
