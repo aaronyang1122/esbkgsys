@@ -3,57 +3,22 @@
  */
 
 var models = require('../models');
+var commonfunc = require('../common/common');
 var News = models.News;
 
-// news crud
-// create
-exports.addNews = function (body, callback) {
-    var newOne = new News(body);
-    newOne.save(function (err) {
-        // if (err) throw err;
-        callback(err);
-    })
-}
+// News CRUD
 
-// read
-exports.newsList = function (callback) {
-    News.find({}, {'title': 1, 'readcount': 1, 'index': 1, 'keyword': 1, 'createtime': 1}, callback)
-}
+// Create
+exports.addNews = commonfunc.Create.bind(News);
 
-exports.newDetail = function (id, callback) {
-    News.findOne({'_id': id}, callback)
-}
+// Read
+    // List
+exports.newsList = commonfunc.List.bind(News, {'title': 1, 'readcount': 1, 'index': 1, 'keyword': 1, 'createtime': 1});
+    // Detail
+exports.newDetail = commonfunc.Detail.bind(News);
 
-// update
-exports.updateNews = function (id, body, callback) {
-    body.updatetime = new Date();
-    News.findByIdAndUpdate(id, body, { new: true }, callback);
-}
+// Update
+exports.updateNews = commonfunc.Update.bind(News);
 
-// delete
-exports.delNews = function (id, callback) {
-    var item = [];
-    switch (id.constructor) {
-        case Array:
-            id.forEach(function (e, i, arr) {
-                item[i] = new Promise(function (resolve, reject) {
-                    News.findByIdAndRemove(e, function (err) {
-                        if (err) {
-                            reject(err);
-                        } else {
-                            resolve();
-                        }
-                    })
-                })
-            })
-            Promise.all(item).then(function () {
-                callback();
-            }).catch(function (err) {
-                callback(err);
-            })
-            break;
-        case String:
-            News.findByIdAndRemove(id, callback)
-            break;
-    }
-}
+// Delete
+exports.delNews = commonfunc.Delete.bind(News);

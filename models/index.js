@@ -15,8 +15,13 @@ mongoose.connect(config.db, config.dboptions, function (err) {
     }
 });
 
+// news
 require('./news');
-require('./banner');
+// index slider banner
+require('./slider');
+// product
+require('./product');
 
 exports.News = mongoose.model('News');
-exports.Banner = mongoose.model('Banner');
+exports.Slider = mongoose.model('Slider');
+exports.Product = mongoose.model('Product');

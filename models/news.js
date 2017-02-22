@@ -8,16 +8,16 @@ var Schema = mongoose.Schema;
 
 var newsSchema = new Schema({
     title: {
-        ch: {type: String},
-        en: {type: String}
+        ch: String,
+        en: String
     },
     keyword: {
-        ch: {type: Array},
-        en: {type: Array}
+        ch: Array,
+        en: Array
     },
     content: {
-        ch: {type: Schema.Types.Mixed},
-        en: {type: Schema.Types.Mixed}
+        ch: Schema.Types.Mixed,
+        en: Schema.Types.Mixed
     },
     readcount: {
         type: Number,
@@ -35,7 +35,7 @@ var newsSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    img: {type: String}
+    img: String
 });
 
 newsSchema.index({
