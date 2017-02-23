@@ -26,7 +26,10 @@ var productSchema = new Schema({
             index: Number
         }
     ],
-    index: Number,
+    index: {
+        type: Number,
+        default: 0
+    },
     link: String,
     updatetime: {
         type: Date,

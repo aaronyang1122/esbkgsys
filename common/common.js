@@ -14,8 +14,20 @@ exports.Create = function (body, callback) {
 
 // Read
     // Read List
-exports.List = function (params, callback) {
-    this.find({}, params, callback)
+exports.List = function (params, order, callback) {
+    // this.find({}, params, callback)
+    switch (arguments.length) {
+        case 1:
+            callback = params;
+            params = {};
+            order = {};
+            break;
+        case 2:
+            callback = order;
+            order = {};
+            break;
+    }
+    this.find({}, params).sort(order).exec(callback)
 }
     // Read Detail
 exports.Detail = function (id, callback) {

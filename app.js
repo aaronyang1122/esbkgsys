@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var news = require('./routes/news');
+var product = require('./routes/product');
+var slider = require('./routes/slider');
+var upload = require('./routes/upload');
 
 var app = express();
 
@@ -21,11 +24,30 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
+
+// static service
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/news', news);
+//设置跨域访问
+app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",' 3.2.1')
+    // res.header("Content-Type", "application/json;charset=utf-8");
+    next();
+});
 
+// route index
+app.use('/', index);
+// route news
+app.use('/news', news);
+// route product
+app.use('/product', product);
+// route slider
+app.use('/slider', slider);
+
+app.use('/upload', upload);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

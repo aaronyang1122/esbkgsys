@@ -1,10 +1,11 @@
 /**
- * Created by yangjian0101 on 2017/2/17.
+ * Created by yangjian0101 on 2017/2/23.
  */
-var News = require('../service').News;
+
+var Product = require('../service').Product;
 
 exports.list = function (req, res, next) {
-    News.list(function (err, list) {
+    Product.list(function (err, list) {
         if (err) return next(err);
         res.send(list);
     })
@@ -12,11 +13,11 @@ exports.list = function (req, res, next) {
 
 exports.add = function (req, res, next) {
     var checkkeys = true;
-    ['title','content','keyword','img'].forEach(function (e, i, arr) {
+    ['name','section'].forEach(function (e, i, arr) {
         if (!req.body.hasOwnProperty(e)) return checkkeys = false;
     });
     if (checkkeys) {
-        News.add(req.body, function (err) {
+        Product.add(req.body, function (err) {
             if (err) return next(err);
             res.send('update successful');
         })
@@ -26,14 +27,14 @@ exports.add = function (req, res, next) {
 }
 
 exports.detail = function (req, res, next) {
-    News.detail(req.query.id, function (err, detail) {
+    Product.detail(req.query.id, function (err, detail) {
         if (err) return next(err);
         res.send(detail===null?{}:detail);
     })
 }
 
 exports.delete = function (req, res, next) {
-    News.delete(req.body.id, function (err) {
+    Product.delete(req.body.id, function (err) {
         // res.status(500).send(err.message);
         if (err) return next(err);
         res.send('delete successful');
@@ -41,7 +42,7 @@ exports.delete = function (req, res, next) {
 }
 
 exports.update = function (req, res, next) {
-    News.update(req.query.id, req.body, function (err, item) {
+    Product.update(req.query.id, req.body, function (err, item) {
         if (err) return next(err);
         res.send(item);
     })

@@ -18,7 +18,10 @@ var sliderSchema = new Schema({
         en: String
     },
     textposition: String,
-    index: Number,
+    index: {
+        type: Number,
+        default: 0
+    },
     updatetime: {
         type: Date,
         default: Date.now
