@@ -7,6 +7,6 @@ var router = express.Router();
 var upload = require('../controllers/upload');
 
 /* POST update */
-router.post('/:type?', upload.dataInput);
+router.post('/:type?', upload);
 
 module.exports = router;

@@ -37,7 +37,7 @@ var upload = multer({
     }
 }).single('file');
 
-exports.dataInput = function (req, res, next) {
+module.exports = function (req, res, next) {
     upload(req, res, function (err) {
         if (err) return next(err)
         res.send(req.file)
