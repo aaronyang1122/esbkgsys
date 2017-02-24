@@ -4,23 +4,9 @@
 
 var express = require('express');
 var router = express.Router();
-// var upload = require('../controllers/upload');
-
-
-
-var multer  = require('multer')
-var upload = multer({ dest: './public/uploads/' })
-
-
+var upload = require('../controllers/upload');
 
 /* POST update */
-router.post('/', upload.single('file'), function (req, res, next) {
-    // req.file is the `avatar` file
-    // req.body will hold the text fields, if there were any
-    // if (err) return next(err);
-    console.log(req);
-    res.send(req.file)
-});
-
+router.post('/:type?', upload.dataInput);
 
 module.exports = router;
