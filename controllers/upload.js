@@ -6,7 +6,7 @@ var multer = require('multer');
 var fs = require('fs');
 
 var outputFolder = function (type) {
-    let Folder = type ? './public/images/' + type : './public/uploads/';
+    var Folder = type ? './public/images/' + type : './public/uploads/';
     if (!fs.existsSync(Folder)) fs.mkdirSync(Folder);
     return Folder;
 }
