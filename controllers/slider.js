@@ -1,21 +1,18 @@
 /**
  * Created by yangjian0101 on 2017/2/23.
  */
-
 var Slider = require('../service').Slider;
 
 exports.list = function (req, res, next) {
     Slider.list(function (err, list) {
         if (err) return next(err);
-        console.log(Object.isFrozen(list[0]))
-        var _list = list.map(function (e) {
-            e.aa = 'aaa';
+        list.forEach(function (e) {
+            e.createtime = new Date(e.createtime).Format("yyyy-MM-dd hh:mm:ss")
+            e.updatetime = new Date(e.updatetime).Format("yyyy-MM-dd hh:mm:ss")
             return e;
-            // console.log(Object.isExtensible(e))
         })
-console.log(_list)
         res.send({
-            content: _list
+            content: list
         });
     })
 }
@@ -46,6 +43,8 @@ exports.delete = function (req, res, next) {
 exports.update = function (req, res, next) {
     Slider.update(req.query.id, req.body, function (err, item) {
         if (err) return next(err);
+        item.updatetime = new Date(item.updatetime).Format("yyyy-MM-dd hh:mm:ss")
+        item.createtime = new Date(item.createtime).Format("yyyy-MM-dd hh:mm:ss")
         res.send(item);
     })
 }

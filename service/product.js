@@ -12,7 +12,7 @@ exports.add = commonfunc.Create.bind(Product);
 
 // Read
     // List
-exports.list = commonfunc.List.bind(Product, {'name': 1, 'index': 1, 'link': 1}, {'index': -1, 'createtime': -1});
+exports.list = commonfunc.List.bind(Product, {'name': 1, 'index': 1, 'link': 1}, {'index': -1, 'updatetime': -1, 'createtime': -1});
     // Detail
 exports.detail = commonfunc.Detail.bind(Product);
 

@@ -12,7 +12,7 @@ exports.add = commonfunc.Create.bind(News);
 
 // Read
     // List
-exports.list = commonfunc.List.bind(News, {'title': 1, 'readcount': 1, 'index': 1, 'keyword': 1, 'createtime': 1}, {'index': -1, 'createtime': -1});
+exports.list = commonfunc.List.bind(News, {'title': 1, 'readcount': 1, 'index': 1, 'keyword': 1, 'createtime': 1}, {'index': -1, 'updatetime': -1, 'createtime': -1});
     // Detail
 exports.detail = commonfunc.Detail.bind(News);
 
