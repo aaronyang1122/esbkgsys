@@ -41,13 +41,13 @@ app.all('*', function(req, res, next) {
 // route index
 app.use('/', index);
 // route news
-app.use('/news', news);
+app.use('/api/news', news);
 // route product
-app.use('/product', product);
+app.use('/api/product', product);
 // route slider
-app.use('/slider', slider);
+app.use('/api/slider', slider);
 
-app.use('/upload', upload);
+app.use('/api/upload', upload);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

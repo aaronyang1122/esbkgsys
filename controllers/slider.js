@@ -7,7 +7,16 @@ var Slider = require('../service').Slider;
 exports.list = function (req, res, next) {
     Slider.list(function (err, list) {
         if (err) return next(err);
-        res.send(list);
+        console.log(Object.isFrozen(list[0]))
+        var _list = list.map(function (e) {
+            e.aa = 'aaa';
+            return e;
+            // console.log(Object.isExtensible(e))
+        })
+console.log(_list)
+        res.send({
+            content: _list
+        });
     })
 }
 
