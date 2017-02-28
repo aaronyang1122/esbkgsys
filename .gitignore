@@ -24,7 +24,6 @@ $RECYCLE.BIN/
 # OSX
 # =========================
 
-config.js
 .DS_Store
 node_modules/
 dist/
