@@ -11,10 +11,6 @@ var newsSchema = new Schema({
         ch: String,
         en: String
     },
-    keyword: {
-        ch: Array,
-        en: Array
-    },
     content: {
         ch: Schema.Types.Mixed,
         en: Schema.Types.Mixed
