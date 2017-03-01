@@ -10,7 +10,7 @@ exports.Create = function (body, callback) {
         // if (err) throw err;
         callback(err);
     })
-}
+};
 
 // Read
     // Read List
@@ -28,17 +28,17 @@ exports.List = function (params, order, callback) {
             break;
     }
     this.find({}, params).sort(order).lean().exec(callback)
-}
+};
     // Read Detail
 exports.Detail = function (id, callback) {
-    this.findOne({'_id': id}, {lean: true}, callback)
-}
+    this.findOne({'_id': id}, {}, {lean: true}, callback)
+};
 
 // Update
 exports.Update = function (id, body, callback) {
     body.updatetime = new Date();
     this.findByIdAndUpdate(id, body, { new: true, lean: true }, callback);
-}
+};
 
 // Delete
 exports.Delete = function (id, callback) {
@@ -56,18 +56,18 @@ exports.Delete = function (id, callback) {
                         }
                     })
                 })
-            })
+            });
             Promise.all(item).then(function () {
                 callback();
             }).catch(function (err) {
                 callback(err);
-            })
+            });
             break;
         case String:
-            _this.findByIdAndRemove(id, callback)
+            _this.findByIdAndRemove(id, callback);
             break;
     }
-}
+};
 
 Date.prototype.Format = function (fmt) {
     var o = {
@@ -83,4 +83,4 @@ Date.prototype.Format = function (fmt) {
     for (var k in o)
         if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
-}
+};

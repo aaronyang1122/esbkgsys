@@ -12,6 +12,9 @@ router.get('/list', slider.list);
 /* POST add Slider */
 router.post('/add', slider.add);
 
+/* GET Product Detail */
+router.get('/detail', slider.detail);
+
 /* DELETE Slider */
 router.delete('/delete', slider.delete);
 

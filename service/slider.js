@@ -13,6 +13,8 @@ exports.add = commonfunc.Create.bind(Slider);
 // Read
     // List
 exports.list = commonfunc.List.bind(Slider,{},{'index': -1, 'updatetime': -1, 'createtime': -1});
+    // Detail
+exports.detail = commonfunc.Detail.bind(Slider);
 
 // Update
 exports.update = commonfunc.Update.bind(Slider);
