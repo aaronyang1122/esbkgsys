@@ -11,7 +11,9 @@ exports.list = function (req, res, next) {
             e.updatetime = new Date(e.updatetime).Format("yyyy-MM-dd hh:mm:ss");
             return e;
         });
-        res.send(list);
+        res.send({
+            content: list
+        });
     })
 };
 
