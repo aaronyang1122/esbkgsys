@@ -10,7 +10,7 @@ var productSchema = new Schema({
         ch: String,
         en: String
     },
-    section: [
+    sections: [
         {
             title: {
                 ch: String,
@@ -22,7 +22,7 @@ var productSchema = new Schema({
             },
             img: String,
             link: String,
-            textposition: String,
+            textposition: String
         }
     ],
     index: {

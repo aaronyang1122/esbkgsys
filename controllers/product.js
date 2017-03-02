@@ -20,7 +20,7 @@ exports.list = function (req, res, next) {
 
 exports.add = function (req, res, next) {
     var checkkeys = true;
-    ['name','section'].forEach(function (e, i, arr) {
+    ['name','sections'].forEach(function (e, i, arr) {
         if (!req.body.hasOwnProperty(e)) return checkkeys = false;
     });
     if (checkkeys) {
