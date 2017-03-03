@@ -10,6 +10,7 @@ var news = require('./routes/news');
 var product = require('./routes/product');
 var slider = require('./routes/slider');
 var upload = require('./routes/upload');
+var companyinfo = require('./routes/companyinfo');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(require('less-middleware')(path.join(__dirname, 'public')));
 
 // static service
 app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use('/', express.static(path.join(__dirname, 'www')));
 
 //设置跨域访问
 app.all('*', function(req, res, next) {
@@ -46,8 +48,11 @@ app.use('/api/news', news);
 app.use('/api/product', product);
 // route slider
 app.use('/api/slider', slider);
-
+// route upload
 app.use('/api/upload', upload);
+
+// route company info
+app.use('/api/uploadcompanyinfo', companyinfo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
