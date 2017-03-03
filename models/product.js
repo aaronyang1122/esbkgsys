@@ -34,6 +34,10 @@ var productSchema = new Schema({
         default: 0
     },
     link: String,
+    linktext: {
+        ch: String,
+        en: String
+    },
     updatetime: {
         type: Date,
         default: Date.now
