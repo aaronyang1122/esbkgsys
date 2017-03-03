@@ -6,8 +6,9 @@ var fs = require('fs');
 
 module.exports = function (req, res, next) {
     var _data = JSON.stringify(req.body);
+    var _path = "./public/data/" + req.params.item + ".json";
 
-    fs.open("./public/data/companyinfo.json", "w", function (err, fd) {
+    fs.open(_path, "w", function (err, fd) {
         var buf = new Buffer(_data);
 
         fs.writeFile(fd, buf, function (err) {

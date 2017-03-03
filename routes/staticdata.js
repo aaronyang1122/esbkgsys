@@ -4,9 +4,9 @@
 
 var express = require('express');
 var router = express.Router();
-var companyinfo = require('../controllers/companyinfo');
+var staticdata = require('../controllers/staticdata');
 
 /* POST update */
-router.post('/', companyinfo);
+router.post('/:item', staticdata);
 
 module.exports = router;
