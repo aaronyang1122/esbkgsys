@@ -22,6 +22,7 @@ var productSchema = new Schema({
             },
             img: String,
             link: String,
+            linktext: String,
             textposition: String
         }
     ],

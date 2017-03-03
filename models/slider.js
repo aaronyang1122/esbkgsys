@@ -18,6 +18,7 @@ var sliderSchema = new Schema({
         en: String
     },
     textposition: String,
+    link: String,
     index: {
         type: Number,
         default: 0
