@@ -11,6 +11,7 @@ var product = require('./routes/product');
 var slider = require('./routes/slider');
 var upload = require('./routes/upload');
 var staticdata = require('./routes/staticdata');
+var user = require('./routes/user');
 
 var app = express();
 
@@ -50,7 +51,8 @@ app.use('/api/product', product);
 app.use('/api/slider', slider);
 // route upload
 app.use('/api/upload', upload);
-
+// route auth
+app.use('/api/auth', user);
 // route staticdata
 app.use('/api/staticdata', staticdata);
 

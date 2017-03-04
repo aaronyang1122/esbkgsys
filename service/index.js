@@ -7,3 +7,5 @@ exports.News = require('./news');
 exports.Slider = require('./slider');
 
 exports.Product = require('./product');
+
+exports.User = require('./user');

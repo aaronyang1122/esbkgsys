@@ -21,7 +21,10 @@ require('./news');
 require('./slider');
 // product
 require('./product');
+// user
+require('./user');
 
 exports.News = mongoose.model('News');
 exports.Slider = mongoose.model('Slider');
 exports.Product = mongoose.model('Product');
+exports.User = mongoose.model('User');
