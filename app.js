@@ -30,6 +30,7 @@ app.use(require('less-middleware')(path.join(__dirname, 'public')));
 // static service
 app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use('/', express.static(path.join(__dirname, 'www')));
+app.use('/backstage', express.static(path.join(__dirname, 'backstage')));
 
 //设置跨域访问
 app.all('*', function(req, res, next) {
