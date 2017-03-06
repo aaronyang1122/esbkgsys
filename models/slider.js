@@ -13,10 +13,6 @@ var sliderSchema = new Schema({
     },
     logo: String,
     prdpic: String,
-    content: {
-        ch: String,
-        en: String
-    },
     textposition: String,
     link: String,
     index: {

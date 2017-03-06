@@ -30,7 +30,7 @@ exports.detail = function (req, res, next) {
 
 exports.add = function (req, res, next) {
     var checkkeys = true;
-    ['title','logo','prdpic','content','textposition'].forEach(function (e, i, arr) {
+    ['title','logo','prdpic','textposition'].forEach(function (e, i, arr) {
         if (!req.body.hasOwnProperty(e)) return checkkeys = false;
     });
     if (checkkeys) {
