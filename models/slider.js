@@ -7,14 +7,16 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var sliderSchema = new Schema({
-    title: {
+    title: String,
+    link: String,
+    imgpc: {
         ch: String,
         en: String
     },
-    logo: String,
-    prdpic: String,
-    textposition: String,
-    link: String,
+    imgmobile: {
+        ch: String,
+        en: String
+    },
     index: {
         type: Number,
         default: 0
