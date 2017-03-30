@@ -11,8 +11,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(config.db, config.dboptions, function (err) {
     if (err) {
         console.log('connect to %s error: ', config.db, err.message);
-        // process.exit(1);
-        throw err
+        process.exit(1);
     }
 });
 
